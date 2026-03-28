@@ -1,9 +1,7 @@
-name: Garmin Sync
-
-on:
-    schedule:
-      - cron: '0 8 * * *'  # Every day at 8:00 AM UTC (3:00 AM EST)
-    workflow_dispatch:       # Also allows manual trigger from GitHub UI
+name: Garmin Sync                                                                                                                                                                                                                          
+  on:                                                                                                                                                                                                                                            schedule:
+      - cron: '0 8 * * *'
+    workflow_dispatch:
 
   jobs:
     sync:
@@ -21,8 +19,8 @@ on:
 
         - name: Run sync
           env:
-            GARMIN_EMAIL:    ${{ secrets.GARMIN_EMAIL }}
+            GARMIN_EMAIL: ${{ secrets.GARMIN_EMAIL }}
             GARMIN_PASSWORD: ${{ secrets.GARMIN_PASSWORD }}
-            REDIS_URL:       ${{ secrets.REDIS_URL }}
-            REDIS_TOKEN:     ${{ secrets.REDIS_TOKEN }}
+            REDIS_URL: ${{ secrets.REDIS_URL }}
+            REDIS_TOKEN: ${{ secrets.REDIS_TOKEN }}
           run: python sync.py
